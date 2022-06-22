@@ -2,15 +2,27 @@ plugins {
 	id 'org.springframework.boot' version '2.7.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	//id 'org.flywaydb.flyway' version '7.6.0'
 }
 
-group = 'lv.junkina'
+group = 'lv.junkina.eShop'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+}
 
 repositories {
 	mavenCentral()
 }
+
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -21,8 +33,8 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
-	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.2'
-	implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.0'
+//	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.2'
+//	implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.0'
 	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	compileOnly 'org.projectlombok:lombok'
@@ -30,6 +42,23 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation "org.mapstruct:mapstruct:1.4.2.Final"
+	testImplementation "org.testng:testng:6.10", "org.easytesting:fest-assert:1.4"
+	annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+
+	implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+	implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+	implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.14.1'
+	//implementation 'org.flywaydb:flyway-core:7.6.0'
+
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: project.swaggerVersion
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: project.swaggerVersion
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: project.swaggerVersion
+
+
 
 }
 

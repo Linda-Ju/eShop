@@ -31,8 +31,9 @@ public class Config {
     private Docket appendTags(Docket docket) {
         return docket.tags(
                 new Tag(DescriptionVariables.PRODUCT,
-                        "Used to get, create, update and delete products")
-
+                        "Controller used to get, create, update and delete products"),
+                new Tag(DescriptionVariables.PHOTO,
+                        "Controller used to get, create, update and delete photos")
         );
     }
 

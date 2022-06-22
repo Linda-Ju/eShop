@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 
 @ApiModel(description = "Model of the product data ")
@@ -22,23 +23,24 @@ public class Product {
     private Long id;
 
     @ApiModelProperty(notes = "Name of the product")
-    @NonNull
+    //@NonNull
     @NotEmpty
     private String name;
 
     @ApiModelProperty(notes = "Price of the product")
-    @NonNull
+    //@NonNull
     @NotEmpty
-    private double price;
+    private Double price;
 
     @ApiModelProperty(notes = "Quantity")
-    @NonNull
+    //@NonNull
     @NotEmpty
-    private int quantity;
+    private Integer quantity;
 
     @ApiModelProperty(notes = "Product description")
     private String description;
 
     @ApiModelProperty(notes = "Photo of the product")
-    private byte[] photo;
+    private Integer photo;
+
 }

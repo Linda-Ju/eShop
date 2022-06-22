@@ -22,12 +22,12 @@ public class Photo {
     private Long id;
 
     @ApiModelProperty(notes = "Name of the photo")
-    @NonNull
+    //@NonNull
     @NotEmpty
     private String name;
 
     @ApiModelProperty(notes = "Photo of the product")
-    @NonNull
+   // @NonNull
     @NotEmpty
-    private byte[] photo;
+    private Byte[] photo;
 }
