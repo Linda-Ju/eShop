@@ -1,6 +1,6 @@
-package lv.junkina.eShop.service;
+package lv.junkina.eshop.service;
 
-import lv.junkina.eShop.model.Product;
+import lv.junkina.eshop.model.Product;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +10,7 @@ public interface ProductService {
 
     List<Product> findAllProducts();
 
-    Product saveProduct(Product product) throws Exception;
+    Product saveProduct(Product product);
 
     void deleteProductById(Long id);
 }

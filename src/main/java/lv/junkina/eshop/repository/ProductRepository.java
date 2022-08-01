@@ -1,6 +1,6 @@
-package lv.junkina.eShop.repository;
+package lv.junkina.eshop.repository;
 
-import lv.junkina.eShop.repository.model.ProductDAO;
+import lv.junkina.eshop.repository.model.ProductDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

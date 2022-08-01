@@ -1,4 +1,4 @@
-package lv.junkina.eShop;
+package lv.junkina.eshop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

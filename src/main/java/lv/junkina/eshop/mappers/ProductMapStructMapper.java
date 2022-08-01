@@ -1,7 +1,7 @@
-package lv.junkina.eShop.mappers;
+package lv.junkina.eshop.mappers;
 
-import lv.junkina.eShop.model.Product;
-import lv.junkina.eShop.repository.model.ProductDAO;
+import lv.junkina.eshop.model.Product;
+import lv.junkina.eshop.repository.model.ProductDAO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

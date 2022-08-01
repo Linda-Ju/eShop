@@ -1,15 +1,13 @@
-package lv.junkina.eShop.service.impl;
+package lv.junkina.eshop.service.impl;
 
 import lombok.extern.log4j.Log4j2;
-import lv.junkina.eShop.mappers.ProductMapStructMapper;
-import lv.junkina.eShop.model.Product;
-import lv.junkina.eShop.repository.ProductRepository;
-import lv.junkina.eShop.repository.model.ProductDAO;
-import lv.junkina.eShop.service.ProductService;
+import lv.junkina.eshop.mappers.ProductMapStructMapper;
+import lv.junkina.eshop.model.Product;
+import lv.junkina.eshop.repository.ProductRepository;
+import lv.junkina.eshop.repository.model.ProductDAO;
+import lv.junkina.eshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,11 +36,7 @@ public class ProductServiceImplementation implements ProductService {
         return productDAOList.stream().map(productMapper::productDAOToProduct).collect(Collectors.toList());
     }
     @Override
-    public Product saveProduct(Product product) throws Exception {
-        if (!hasNoMatch(product)) {
-            log.error("Product conflict exception is thrown: {}", HttpStatus.CONFLICT);
-            throw new HttpClientErrorException(HttpStatus.CONFLICT);
-        }
+    public Product saveProduct(Product product) {
         ProductDAO productSaved = productRepository.save(productMapper.productToProductDAO(product));
         log.info("New product saved: {}", () -> productSaved);
         return productMapper.productDAOToProduct(productSaved);

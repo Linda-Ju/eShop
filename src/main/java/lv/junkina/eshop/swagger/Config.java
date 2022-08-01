@@ -1,4 +1,4 @@
-package lv.junkina.eShop.swagger;
+package lv.junkina.eshop.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
