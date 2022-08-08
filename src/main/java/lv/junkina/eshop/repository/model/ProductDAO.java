@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
@@ -23,7 +24,7 @@ public class ProductDAO {
     private String name;
 
     @Column(name = "price")
-    private double price;
+    private BigDecimal price;
 
     @Column(name = "qty")
     private int quantity;

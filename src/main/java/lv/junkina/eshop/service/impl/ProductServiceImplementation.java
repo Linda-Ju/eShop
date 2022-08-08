@@ -22,7 +22,7 @@ public class ProductServiceImplementation implements ProductService {
     @Autowired
     ProductMapStructMapper productMapper;
     @Override
-    public Optional<Product> findProductById(Long id) {
+    public Optional<Product> getProductById(Long id) {
         Optional<Product> productById = productRepository.findById(id)
                 .flatMap(product -> Optional.ofNullable(productMapper.productDAOToProduct(product)));
         log.info("Product with id {} is {}", id, productById);
@@ -30,7 +30,7 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public List<Product> findAllProducts() {
+    public List<Product> getAllProducts() {
         List<ProductDAO> productDAOList = productRepository.findAll();
         log.info("Get product list. Size is: {}", productDAOList::size);
         return productDAOList.stream().map(productMapper::productDAOToProduct).collect(Collectors.toList());
@@ -46,11 +46,5 @@ public class ProductServiceImplementation implements ProductService {
     public void deleteProductById(Long id) {
         productRepository.deleteById(id);
         log.info("Product with id {} is deleted", id);
-    }
-
-    public boolean hasNoMatch(Product product) {
-        return productRepository.findAll().stream()
-                .noneMatch(t -> !t.getId().equals(product.getId()) &&
-                        t.getName().equals(product.getName()));
     }
 }

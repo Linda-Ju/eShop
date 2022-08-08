@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
-    Optional<Product> findProductById(Long id);
+    Optional<Product> getProductById(Long id);
 
-    List<Product> findAllProducts();
+    List<Product> getAllProducts();
 
-    Product saveProduct(Product product);
+    Product saveProduct(Product product) ;
 
     void deleteProductById(Long id);
 }

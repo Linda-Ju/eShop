@@ -20,13 +20,13 @@ import java.util.Optional;
 @Api(tags = {DescriptionVariables.PRODUCT})
 @Log4j2
 @RestController
-@RequestMapping("/api/v1/product")
+@RequestMapping("/api/product")
 public class ProductController {
     @Autowired
     ProductService productService;
 
     @GetMapping
-    @ApiOperation(value = "Finds all products",
+    @ApiOperation(value = "Get all products",
             notes = "Returns the entire list of products",
             response = Product.class, responseContainer = "List")
     @ApiResponses(value = {
@@ -35,9 +35,9 @@ public class ProductController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The server has not found anything matching the Request-URI"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<List<Product>> findAllProducts() {
+    public ResponseEntity<List<Product>> getAllProducts() {
         log.info("Retrieve list of Products");
-        List<Product> productList = productService.findAllProducts();
+        List<Product> productList = productService.getAllProducts();
         if (productList.isEmpty()) {
             log.warn("Product list is empty! {}", productList);
             return ResponseEntity.notFound().build();
@@ -47,7 +47,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "Finds product by ID",
+    @ApiOperation(value = "Get product by ID",
             notes = "Enter ID to search specific product",
             response = Product.class)
     @ApiResponses(value = {
@@ -56,10 +56,10 @@ public class ProductController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The server has not found anything matching the Request-URI"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<Product> findProductById(@ApiParam(value = "product ID", required = true)
+    public ResponseEntity<Product> getProductById(@ApiParam(value = "product ID", required = true)
                                                          @NonNull @PathVariable Long id) {
-        log.info("Find product by passing ID, where product ID is :{} ", id);
-        Optional<Product> product = (productService.findProductById(id));
+        log.info("Get product by passing ID, where product ID is :{} ", id);
+        Optional<Product> product = (productService.getProductById(id));
         if (!product.isPresent()) {
             log.warn("Product with ID {} is not found.", id);
         } else {
@@ -105,7 +105,7 @@ public class ProductController {
     public ResponseEntity<Void> deleteProductById(@ApiParam(value = "The id of the product", required = true)
                                                    @NonNull @PathVariable Long id) {
         log.info("Delete Employee by passing ID, where ID is:{}", id);
-        Optional<Product> product = productService.findProductById(id);
+        Optional<Product> product = productService.getProductById(id);
         if (!(product.isPresent())) {
             log.warn("Product for delete with id {} is not found.", id);
             return ResponseEntity.notFound().build();
