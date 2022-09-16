@@ -25,7 +25,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping
+    @GetMapping("/all")
     @ApiOperation(value = "Get all products",
             notes = "Returns the entire list of products",
             response = Product.class, responseContainer = "List")
@@ -80,7 +80,7 @@ public class ProductController {
             @ApiResponse(code = 404, message = "The server has not found anything matching the Request-URI"),
             @ApiResponse(code = 500, message = "Server error")})
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Product> saveProduct(@Valid @RequestBody Product product, BindingResult bindingResult) throws Exception {
+    public ResponseEntity<Product> saveProduct(@Valid @RequestBody Product product, BindingResult bindingResult) {
         log.info("Create new product by passing : {}", product);
         if (bindingResult.hasErrors()) {
             log.error("New product is not created: error {}", bindingResult);
@@ -129,7 +129,7 @@ public class ProductController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<Product> updateProductById(@ApiParam(value = "id of the product", required = true)
                                                        @NonNull @PathVariable Long id,
-                                                       @Valid @RequestBody Product product, BindingResult bindingResult) throws Exception {
+                                                       @Valid @RequestBody Product product, BindingResult bindingResult)  {
         log.info("Update existing product with ID: {} and new body: {}", id, product);
         if (bindingResult.hasErrors() || !id.equals(product.getId())) {
             log.warn("Product for update with id {} not found", id);
@@ -137,7 +137,7 @@ public class ProductController {
         }
         productService.saveProduct(product);
         log.debug("Product with id {} is updated: {}", id, product);
-        return new ResponseEntity<>(product, HttpStatus.CREATED);
+        return new ResponseEntity<>(product, HttpStatus.ACCEPTED);
     }
 
 }

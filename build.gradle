@@ -2,12 +2,11 @@ plugins {
 	id 'org.springframework.boot' version '2.7.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	//id 'org.flywaydb.flyway' version '7.6.0'
 }
 
 group = 'lv.junkina.eShop'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = "1.9"
 
 configurations {
 	compileOnly {
@@ -36,8 +35,7 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
-//	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.2'
-//	implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.0'
+
 	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	compileOnly 'org.projectlombok:lombok'
@@ -53,7 +51,6 @@ dependencies {
 	implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
 	implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
 	implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.14.1'
-	//implementation 'org.flywaydb:flyway-core:7.6.0'
 
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
@@ -61,10 +58,9 @@ dependencies {
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: project.swaggerVersion
 	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: project.swaggerVersion
 
-
-
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+targetCompatibility = JavaVersion.VERSION_1_9
