@@ -50,7 +50,7 @@ class ProductControllerTest {
         productList.add(testProduct());
         when(serviceImpl.getAllProducts()).thenReturn(productList);
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .get(URL)
+                        .get(URL + "/all")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -58,7 +58,7 @@ class ProductControllerTest {
     @Test
     void getAllProductsNoData() throws Exception {
         when(serviceImpl.getAllProducts()).thenReturn(Collections.EMPTY_LIST);
-        mockMvc.perform(get(URL))
+        mockMvc.perform(get(URL+ "/all"))
                 .andExpect(status().isNotFound());
     }
 

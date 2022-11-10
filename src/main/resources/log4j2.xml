@@ -24,6 +24,6 @@
             <AppenderRef ref="ConsoleAppender"/>
             <AppenderRef ref="RollingFile"/>
         </Root>
-        <Logger name="com.accenture.ems" level="trace"/>
+        <Logger name="lv.junkina.eShop" level="trace"/>
     </Loggers>
 </Configuration>
