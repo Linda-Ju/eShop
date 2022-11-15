@@ -8,6 +8,7 @@ group = 'lv.junkina.eShop'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = "1.9"
 
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -15,6 +16,7 @@ configurations {
 	all {
 		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 	}
+
 }
 
 repositories {
