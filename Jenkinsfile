@@ -5,6 +5,11 @@ pipeline {
     }
 
     stages {
+        stage('Cloning Git') {
+          steps {
+            git url: 'https://github.com/Linda-Ju/eShop.git',
+                credentialsId: 'git-token'
+          }
         stage('Build') {
             steps {
                 echo 'executing gradle...'
