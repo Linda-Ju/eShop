@@ -15,6 +15,7 @@ import org.springframework.test.annotation.DirtiesContext;
 
 import java.math.BigDecimal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -31,7 +32,7 @@ class ProductControllerIT {
     @Test
     void findAllProducts() throws JSONException {
         String response = this.restTemplate.getForObject("/api/product/all", String.class);
-        JSONAssert.assertEquals("[{id:1}, {id:2}, {id:3}, {id:4}]", response, false);
+        JSONAssert.assertEquals("[{id:1}, {id:2}, {id:3}, {id:7}]", response, false);
     }
 
     @Test
@@ -47,7 +48,7 @@ class ProductControllerIT {
     }
 
     @Test
-    void addNewProduct() {
+    void addNewProduct() throws JSONException {
         ResponseEntity<Product> responseEntity = this.restTemplate.postForEntity("/api/product", newProduct1(), Product.class);
         assertAll(
                 () -> Assertions.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode()),
@@ -67,7 +68,7 @@ class ProductControllerIT {
         serviceImplementation.saveProduct(newProductForDelete());
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<String> responseEntity = this.restTemplate.exchange("/api/product/14", HttpMethod.DELETE, entity, String.class);
+        ResponseEntity<String> responseEntity = this.restTemplate.exchange("/api/product/10", HttpMethod.DELETE, entity, String.class);
         Assertions.assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
     }
 
@@ -91,7 +92,7 @@ class ProductControllerIT {
 
     private Product newProduct1() {
         Product product = new Product();
-        product.setId(6L);
+        product.setId(11L);
         product.setName("Wardrobe");
         product.setPrice(BigDecimal.valueOf(357.83));
         product.setQuantity(26);

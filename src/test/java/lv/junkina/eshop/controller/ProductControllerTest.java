@@ -122,7 +122,7 @@ class ProductControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                         .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1L))
-                        .andExpect(status().isCreated());
+                        .andExpect(status().isAccepted());
         verify(serviceImpl, times(1)).saveProduct(product);
     }
 

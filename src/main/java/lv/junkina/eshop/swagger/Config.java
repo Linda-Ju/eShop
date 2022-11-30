@@ -20,7 +20,7 @@ public class Config {
     public Docket swaggerConfiguration() {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("lv.junkina.eShop"))
+                .apis(RequestHandlerSelectors.basePackage("lv.junkina.eshop"))
                 .paths(PathSelectors.ant("/error").negate())
                 .build()
                 .apiInfo(apiInfo());
@@ -38,7 +38,7 @@ public class Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("eShop API")
-                .description("LIKEA eShop API")
+                .description("eShop API")
                 .version("1.0")
                 .build();
     }
