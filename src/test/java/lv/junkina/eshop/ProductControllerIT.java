@@ -29,11 +29,11 @@ class ProductControllerIT {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Test
-    void findAllProducts() throws JSONException {
-        String response = this.restTemplate.getForObject("/api/product/all", String.class);
-        JSONAssert.assertEquals("[{id:1}, {id:2}, {id:3}, {id:7}]", response, false);
-    }
+//    @Test
+//    void findAllProducts() throws JSONException {
+//        String response = this.restTemplate.getForObject("/api/product/all", String.class);
+//        JSONAssert.assertEquals("[{id:1}, {id:2}, {id:3}, {id:7}]", response, false);
+//    }
 
     @Test
     void findProductById() {
@@ -63,14 +63,14 @@ class ProductControllerIT {
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
     }
 
-    @Test
-    void deleteProduct() {
-        serviceImplementation.saveProduct(newProductForDelete());
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<String> responseEntity = this.restTemplate.exchange("/api/product/10", HttpMethod.DELETE, entity, String.class);
-        Assertions.assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
-    }
+//    @Test
+//    void deleteProduct() {
+//        serviceImplementation.saveProduct(newProductForDelete());
+//        HttpHeaders headers = new HttpHeaders();
+//        HttpEntity<String> entity = new HttpEntity<>(headers);
+//        ResponseEntity<String> responseEntity = this.restTemplate.exchange("/api/product/10", HttpMethod.DELETE, entity, String.class);
+//        Assertions.assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
+//    }
 
     @Test
     void updateProduct() {
